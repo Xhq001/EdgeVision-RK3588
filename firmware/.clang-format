@@ -1,0 +1,24 @@
+# EdgeVision-RK3588 firmware 代码风格
+# 说明：仓库原先在提交规范里引用了 ./.clang-format 却缺失该文件；此处按现有代码风格补齐。
+# 现有代码风格：Allman 花括号、4 空格缩进、~100 列、指针左对齐、连续赋值/声明对齐。
+---
+Language: Cpp
+BasedOnStyle: Google
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+AccessModifierOffset: -1
+BreakBeforeBraces: Allman
+PointerAlignment: Left
+DerivePointerAlignment: false
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Empty
+SortIncludes: false
+IndentCaseLabels: true
+NamespaceIndentation: None
+FixNamespaceComments: true

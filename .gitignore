@@ -1,0 +1,32 @@
+# Build artifacts
+build/
+firmware/build/
+app
+
+# Logs / env
+*.log
+.env
+.DS_Store
+.vscode/
+
+# Node
+node_modules/
+
+# Models & large media (not committed — see firmware/model/README.md)
+*.rknn
+*.onnx
+*.pt
+*.bin
+*.engine
+*.mp4
+*.avi
+
+# Images are ignored by default, but keep documentation assets
+*.jpg
+*.jpeg
+*.png
+*.webp
+!docs/**/*.png
+!docs/**/*.jpg
+!docs/**/*.jpeg
+!docs/**/*.webp

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RK3588 端侧视觉监控平台</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">◉</span>
+        <div>
+          <h1>端侧视觉监控平台</h1>
+          <div class="subtitle">RK3588 · YOLO NPU · 实时监控</div>
+        </div>
+      </div>
+      <div class="conn">
+        <span id="connDot" class="dot dot-off"></span>
+        <span id="connText">未连接</span>
+        <span id="boardAddr" class="board-addr"></span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <!-- 视频区 -->
+      <section class="video-panel card">
+        <div class="video-wrap">
+          <video id="video" autoplay playsinline muted></video>
+          <div id="videoOverlay" class="video-overlay">
+            <div class="overlay-inner">
+              <div class="big">▶</div>
+              <div>点击「开始监控」拉取实时画面</div>
+            </div>
+          </div>
+          <div class="video-badge">
+            <span id="liveBadge" class="live-badge off">● OFFLINE</span>
+          </div>
+        </div>
+        <div class="video-controls">
+          <button id="playBtn" class="btn btn-primary">开始监控</button>
+          <button id="stopBtn" class="btn">停止</button>
+          <span id="videoState" class="muted">就绪</span>
+        </div>
+      </section>
+
+      <!-- 控制区 -->
+      <aside class="side">
+        <div class="card control-card">
+          <h2>摄像头</h2>
+          <div class="row">
+            <select id="cameraSelect" class="select"></select>
+            <button id="switchBtn" class="btn">切换</button>
+          </div>
+          <div class="hint" id="cameraHint">—</div>
+          <button id="refreshCamBtn" class="btn btn-ghost btn-sm">↻ 刷新设备列表</button>
+        </div>
+
+        <div class="card control-card">
+          <h2>智能识别 (YOLO)</h2>
+          <div class="row between">
+            <span>目标检测</span>
+            <label class="switch">
+              <input type="checkbox" id="yoloToggle" />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="hint" id="yoloHint">检测框烧录进画面</div>
+        </div>
+
+        <div class="card control-card">
+          <h2>运行状态</h2>
+          <div class="stat-grid">
+            <div class="stat"><div class="stat-label">视频帧率</div><div id="stVideoFps" class="stat-val">–</div></div>
+            <div class="stat"><div class="stat-label">检测帧率</div><div id="stDetectFps" class="stat-val">–</div></div>
+            <div class="stat"><div class="stat-label">NPU 实例</div><div id="stNpu" class="stat-val">–</div></div>
+            <div class="stat"><div class="stat-label">在推理</div><div id="stInflight" class="stat-val">–</div></div>
+            <div class="stat"><div class="stat-label">分辨率</div><div id="stRes" class="stat-val">–</div></div>
+            <div class="stat"><div class="stat-label">掉帧</div><div id="stDropped" class="stat-val">–</div></div>
+          </div>
+          <div class="meta-line"><span>模型</span><span id="stModel">–</span></div>
+          <div class="meta-line"><span>当前设备</span><span id="stDevice">–</span></div>
+          <div class="meta-line"><span>推理累计</span><span id="stInferOk">–</span></div>
+        </div>
+      </aside>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
